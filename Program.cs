@@ -1,6 +1,24 @@
 ﻿
 class Program
 {
+    static int[] SelectionSort(int[] nums)
+    {
+        for(int i = nums.Length - 1; i >= 0; i--)
+        {
+            int index = i ;
+
+            for(int j = 0; j < i; j++)
+            {
+                if(nums[j] > nums[index])
+                   index = j;
+            }
+
+            if(index != i)
+               (nums[i], nums[index]) = (nums[index], nums[i]);
+        }
+
+        return nums;
+    }
     static int[] Bubblesort(int[] arr)
     {
         for(int i = 0; i < arr.Length - 1; i++)
@@ -63,8 +81,5 @@ class Program
     }
     static void Main(string[] args)
     {
-        Console.WriteLine(ReverseInt(1201));
-        Console.WriteLine(ReverseString("Hello"));
-        Console.WriteLine(ReverseStringRecursive("Hello"));
     }
 }

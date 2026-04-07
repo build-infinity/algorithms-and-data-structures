@@ -1,6 +1,22 @@
 ﻿
 class Program
 {
+    static int[] TwoSum(int[] nums, int target)
+    {
+        Dictionary<int, int> map = new Dictionary<int, int>();
+
+        for(int i = 0; i < nums.Length; i++)
+        {
+            var num = target - nums[i];
+
+            if(map.ContainsKey(num))
+                 return new int[] { map[num], i };
+            
+            map[nums[i]] = i;
+        }
+        
+        throw new Exception("No solution found");
+    }
     static int[] SelectionSort(int[] nums)
     {
         for(int i = nums.Length - 1; i >= 0; i--)

@@ -1,8 +1,37 @@
 ﻿
 class Program
 {
-    static int[] TwoSum(int[] nums, int target)
+    static int RomanToInteger(string roman)
     {
+        Dictionary<char, int> dic = new Dictionary<char, int>()
+        {
+            { 'I', 1 },
+            { 'V', 5 },
+            { 'X', 10 },
+            { 'L', 50 },
+            { 'C', 100 },
+            { 'D', 500 },
+            { 'M', 1000 }
+        };
+
+        int result = 0;
+
+        for(int i = 0; i < roman.Length; i++)
+        {
+            if(i + 1 < roman.Length && dic[roman[i]] < dic[roman[i + 1]])
+            {
+               result -= dic[roman[i]];
+            }
+            else 
+            {
+               result += dic[roman[i]];     
+            }           
+        }
+
+        return result;
+    }
+    static int[] TwoSum(int[] nums, int target)
+    {   
         Dictionary<int, int> map = new Dictionary<int, int>();
 
         for(int i = 0; i < nums.Length; i++)
@@ -97,5 +126,6 @@ class Program
     }
     static void Main(string[] args)
     {
+        Console.WriteLine(RomanToInteger("MCMXCIV"));
     }
 }

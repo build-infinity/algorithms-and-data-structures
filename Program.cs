@@ -1,6 +1,28 @@
 ﻿
 class Program
 {
+   static int LengthOfLongestSubstring(string s)
+   {
+      var map = new Dictionary<char, int>();
+      int maxLength = 0;
+      int left = 0;
+
+      for (int right = 0; right < s.Length; right++)
+      {
+          char current = s[right];
+
+         if (map.ContainsKey(current))
+         {
+             left = Math.Max(left, map[current] + 1);
+         }
+
+          map[current] = right;
+
+          maxLength = Math.Max(maxLength, right - left + 1);
+      }
+        
+      return maxLength;
+    }
     static int RomanToInteger(string roman)
     {
         Dictionary<char, int> dic = new Dictionary<char, int>()
@@ -126,6 +148,9 @@ class Program
     }
     static void Main(string[] args)
     {
-        Console.WriteLine(RomanToInteger("MCMXCIV"));
+        Console.WriteLine(LengthOfLongestSubstring("abcabcbb")); 
+        Console.WriteLine(LengthOfLongestSubstring("bbbbb"));    
+        Console.WriteLine(LengthOfLongestSubstring("pwwkew"));   
+        Console.WriteLine(LengthOfLongestSubstring("abba"));   
     }
 }

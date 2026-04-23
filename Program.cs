@@ -1,6 +1,23 @@
-﻿
+﻿// Edge cases were not considered.
+
 class Program
 {
+    static bool IsPalindromeNumber(int number)
+    {
+        int original = number;
+        int reverse = 0;
+
+        while(number > 0)
+        {
+           int digit  = number % 10;
+
+           reverse = reverse * 10 + digit;
+
+           number = number / 10;
+        }
+        
+        return original == reverse;
+    }
    static int LengthOfLongestSubstring(string s)
    {
       var map = new Dictionary<char, int>();
@@ -148,9 +165,6 @@ class Program
     }
     static void Main(string[] args)
     {
-        Console.WriteLine(LengthOfLongestSubstring("abcabcbb")); 
-        Console.WriteLine(LengthOfLongestSubstring("bbbbb"));    
-        Console.WriteLine(LengthOfLongestSubstring("pwwkew"));   
-        Console.WriteLine(LengthOfLongestSubstring("abba"));   
+        Console.WriteLine(IsPalindromeNumber(1221));
     }
 }
